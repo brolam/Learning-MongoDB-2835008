@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root.pwd
+    volumes:
+        - ./:/learning-mongodb
+
+#mongodb://root:root.pwd@localhost:27017/?authSource=admin&readPreference=primary&ssl=false
