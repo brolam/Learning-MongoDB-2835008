@@ -19,3 +19,8 @@ MongoDB stores data in Documents, which differs from how relational databases wo
     "cook_time": 20
 }
 ```
+#Commands
+- use cooker
+- doc = { "title": "Chicken Tacos",  "description": "Classic Mexican tacos", "cook_time": 20 }
+- db.tacos.insertOne(doc)
+- db.tacos.find().prettry()
