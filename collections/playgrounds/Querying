@@ -1,0 +1,43 @@
+use('cooker');
+//Sort, Limit and Skip
+db.recipes.find().count();
+db.recipes.find({}, {title: 1})
+.sort({title: -1})
+.skip(2)
+.limit(2);
+//Oprators and Arrays
+db.recipes.find(
+  {
+    cook_time:{$lte:30}, 
+    prep_time:{$lte:10}
+  }
+  ,
+  {
+    title:1, 
+    cook_time:1,
+    prep_time:1
+  }
+) 
+// Or Operator
+db.recipes.find(
+  {
+    $or:[
+      {
+        cook_time:{$lte:30}, 
+        prep_time:{$lte:10}
+      }
+      ]
+  }
+  ,
+  {
+    title:1, 
+    cook_time:1,
+    prep_time:1
+  }
+); 
+//Find in Arrays
+db.recipes.find({tags:"easy"});
+db.recipes.find({tags:{$all:["easy", "mexican"]}});
+//Find in complex objects
+db.recipes.find({tags:"easy"});
+db.recipes.find({"ingredients.name": "egg"},{title:1});
