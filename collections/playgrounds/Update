@@ -1,0 +1,17 @@
+use('cooker');
+db.examples.find({}, {title: 1})
+db.examples.updateOne({ title:"Pizza" }, {$set:{title:"Thin crust pizza"}});
+//Add Field
+db.examples.updateOne({ title:"Thin crust pizza" }, {$set:{vegan:false}});
+//Remove Field
+db.examples.updateOne({ title:"Thin crust pizza" }, {$unset:{vegan:1}});
+db.examples.find({ title:"Thin crust pizza" });
+db.examples.find({title:"Tacos"}).pretty();
+//++
+db.examples.updateOne({title:"Tacos"}, {$inc: {likes_count:1}});
+//Add in array
+db.examples.updateOne({title:"Tacos"}, {$push:{likes:65}})
+//Remove in array 
+db.examples.updateOne({title:"Tacos"}, {$pull:{likes:65}})
+db.examples.find({title:"Tacos"}, {likes_count:1, likes:1})
+
